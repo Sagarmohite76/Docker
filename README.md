@@ -173,12 +173,12 @@ DATABASE_URL=postgresql://<username>:<password>@<host>:<port>/<dbname>?sslmode=r
 ## 📊 Data Models
 
 ### User Schema
-- `id` (int, primary key)
-- `name` (string, required)
-- `email` (string, unique, required)
-- `password` (string, write-only on creation/update)
-- `created_at` (datetime)
-- `updated_at` (datetime)
+* `id` (int, primary key)
+* `name` (string, required)
+* `email` (string, unique, required)
+* `password` (string, write-only on creation/update)
+* `created_at` (datetime)
+* `updated_at` (datetime)
 
 ### Task Schema
 - `id` (int, primary key)
@@ -191,12 +191,3 @@ DATABASE_URL=postgresql://<username>:<password>@<host>:<port>/<dbname>?sslmode=r
 - `created_at` (datetime)
 - `updated_at` (datetime)
 
----
-
-## 🧪 Testing
-
-To execute automated tests with `pytest`:
-
-```bash
-pytest
-```
