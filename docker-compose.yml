@@ -1,6 +1,7 @@
 services:
   api:
     build: .
+    image: task-api:1.0.0         
     container_name: task-api
     restart: unless-stopped
     env_file:
@@ -9,3 +10,58 @@ services:
       - "8000:8000"
     volumes:
       - .:/app
+
+# services:
+#   api:
+#     build: .
+#     image: 725227952691.dkr.ecr.us-east-1.amazonaws.com/task-api:1.0.0
+#     container_name: task-api
+#     restart: unless-stopped
+#     env_file:
+#       - .env
+#     ports:
+#       - "8000:8000"
+#     volumes:
+#       - .:/app
+
+# ==============================
+# Docker Compose commands
+# ==============================
+
+# Build the Docker image
+# docker compose build
+
+# Login to AWS ECR before pushing
+# aws ecr get-login-password --region us-east-1 | \
+# docker login \
+#   --username AWS \
+#   --password-stdin 725227952691.dkr.ecr.us-east-1.amazonaws.com
+
+# Push the image to AWS ECR
+# docker compose push
+
+# Pull the image from AWS ECR
+# docker compose pull
+
+# Start the container
+# docker compose up -d
+
+# Stop and remove the container
+# docker compose down
+
+# View container logs
+# docker compose logs -f api
+
+# ==============================
+# Versioning
+# ==============================
+
+# Current image version:
+# 725227952691.dkr.ecr.us-east-1.amazonaws.com/task-api:1.0.0
+
+# For a new version, update the image tag:
+# image: 725227952691.dkr.ecr.us-east-1.amazonaws.com/task-api:1.0.1
+
+# Then build and push:
+# docker compose build
+# docker compose push
