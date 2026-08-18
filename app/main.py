@@ -6,7 +6,7 @@ from app.api.routes import task_router, user_router
 app = FastAPI(
     title="Docker Task API",
     description="Task management API built with FastAPI, SQLAlchemy and PostgreSQL",
-    version="1.0.0",
+    version="1.0.1",
 )
 
 Base.metadata.create_all(bind=engine)
@@ -20,4 +20,4 @@ def health_check():
     return {
         "status": "ok",
         "message": "API is running"
-    }
+    }
