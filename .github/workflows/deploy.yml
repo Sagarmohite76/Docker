@@ -34,7 +34,7 @@ jobs:
             docker stop my-backend || true
             docker rm my-backend || true
             docker run -d --name my-backend \
-              -p 80:3000 \
+              -p 80:8000 \
               --env-file /home/ubuntu/.env \
               --restart unless-stopped \
               ${{ secrets.DOCKERHUB_USERNAME }}/my-backend:latest
