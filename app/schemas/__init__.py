@@ -1,4 +1,4 @@
-from app.schemas.task import TaskCreate, TaskPriority, TaskResponse, TaskStatus, TaskUpdate
+from app.schemas.task import TaskCreate, TaskPriority, TaskResponse, TaskStatus, TaskStatusUpdate, TaskUpdate
 from app.schemas.user import UserCreate, UserResponse, UserUpdate
 
 __all__ = [
@@ -6,8 +6,10 @@ __all__ = [
     "TaskPriority",
     "TaskResponse",
     "TaskStatus",
+    "TaskStatusUpdate",
     "TaskUpdate",
     "UserCreate",
     "UserResponse",
     "UserUpdate",
 ]
+

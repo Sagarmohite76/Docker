@@ -168,9 +168,12 @@ DATABASE_URL=postgresql://<username>:<password>@<host>:<port>/<dbname>?sslmode=r
 | Method | Endpoint | Description | Status Code |
 |---|---|---|---|
 | `POST` | `/tasks/` | Create a new task | `201 Created` |
-| `GET` | `/tasks/` | Get all tasks for the user | `200 OK` |
+| `GET` | `/tasks/` | Get all tasks (Optional `?status=pending` filter) | `200 OK` |
 | `GET` | `/tasks/{task_id}` | Retrieve a specific task by ID | `200 OK` |
-| `PATCH` | `/tasks/{task_id}` | Update task details | `200 OK` |
+| `PUT` | `/tasks/{task_id}` | Replace existing task details (Full update) | `200 OK` |
+| `PATCH` | `/tasks/{task_id}` | Update task details (Partial update) | `200 OK` |
+| `PATCH` | `/tasks/{task_id}/status` | Update task status | `200 OK` |
+| `PATCH` | `/tasks/{task_id}/complete` | Mark task as completed | `200 OK` |
 | `DELETE` | `/tasks/{task_id}` | Delete a task | `204 No Content` |
 
 ---
