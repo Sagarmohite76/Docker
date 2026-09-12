@@ -45,3 +45,33 @@ class TaskResponse(BaseModel):
     updated_at: datetime
 
     model_config = ConfigDict(from_attributes=True)
+
+
+class TaskStatusUpdate(BaseModel):
+    status: TaskStatus
+
+
+class TaskStatsResponse(BaseModel):
+    total_tasks: int
+    pending_tasks: int
+    in_progress_tasks: int
+    completed_tasks: int
+    cancelled_tasks: int
+    high_priority_tasks: int
+    medium_priority_tasks: int
+    low_priority_tasks: int
+    overdue_tasks: int
+
+
+class TaskBulkDeleteRequest(BaseModel):
+    task_ids: list[int]
+
+
+class TaskBulkDeleteResponse(BaseModel):
+    deleted_count: int
+    message: str
+
+
+class TaskBulkStatusUpdate(BaseModel):
+    task_ids: list[int]
+    status: TaskStatus

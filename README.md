@@ -163,9 +163,16 @@ DATABASE_URL=postgresql://<username>:<password>@<host>:<port>/<dbname>?sslmode=r
 | Method | Endpoint | Description | Status Code |
 |---|---|---|---|
 | `POST` | `/tasks/` | Create a new task | `201 Created` |
-| `GET` | `/tasks/` | Get all tasks for the user | `200 OK` |
+| `GET` | `/tasks/` | Get all tasks (Supports `status`, `priority`, `search`, `skip`, `limit`, `sort_by`, `sort_order`) | `200 OK` |
+| `GET` | `/tasks/stats/summary` | Get task analytics summary (totals, status counts, overdue) | `200 OK` |
+| `DELETE` | `/tasks/completed/clear` | Clear/delete all completed tasks for user | `200 OK` |
+| `POST` | `/tasks/bulk-delete` | Batch delete tasks by IDs array | `200 OK` |
+| `POST` | `/tasks/bulk-status` | Batch update status for multiple task IDs | `200 OK` |
 | `GET` | `/tasks/{task_id}` | Retrieve a specific task by ID | `200 OK` |
-| `PATCH` | `/tasks/{task_id}` | Update task details | `200 OK` |
+| `PUT` | `/tasks/{task_id}` | Replace existing task details (Full update) | `200 OK` |
+| `PATCH` | `/tasks/{task_id}` | Update existing task details (Partial update) | `200 OK` |
+| `PATCH` | `/tasks/{task_id}/status` | Update status of a specific task | `200 OK` |
+| `PATCH` | `/tasks/{task_id}/complete` | Mark task status as completed | `200 OK` |
 | `DELETE` | `/tasks/{task_id}` | Delete a task | `204 No Content` |
 
 ---
