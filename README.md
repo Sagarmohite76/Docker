@@ -1,4 +1,9 @@
-# Docker Task API
+# 🐳 Docker Task API
+
+[![Python Version](https://img.shields.io/badge/python-3.12%2B-blue.svg)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.100%2B-009688.svg)](https://fastapi.tiangolo.com/)
+[![Docker](https://img.shields.io/badge/docker-containerized-2496ED.svg)](https://www.docker.com/)
+[![PostgreSQL](https://img.shields.io/badge/database-PostgreSQL-336791.svg)](https://www.postgresql.org/)
 
 A robust, production-ready RESTful Task and User Management API built with **FastAPI**, **SQLAlchemy**, and **PostgreSQL**, containerized using **Docker** and **Docker Compose**.
 
@@ -84,8 +89,8 @@ DATABASE_URL=postgresql://<username>:<password>@<host>:<port>/<dbname>?sslmode=r
 
 1. **Clone the repository and navigate to the project directory:**
    ```bash
-   git clone <repository-url>
-   cd docker-task-api
+   git clone https://github.com/Sagarmohite76/Docker.git
+   cd Docker
    ```
 
 2. **Configure Environment Variables:**
@@ -170,6 +175,34 @@ DATABASE_URL=postgresql://<username>:<password>@<host>:<port>/<dbname>?sslmode=r
 
 ---
 
+## 💡 Example Requests
+
+### Create Task (`POST /tasks/`)
+
+```bash
+curl -X 'POST' \
+  'http://localhost:8000/tasks/' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "title": "Setup Docker container",
+  "description": "Configure Dockerfile and docker-compose.yml",
+  "status": "pending",
+  "priority": "high",
+  "due_date": "2026-09-20T18:00:00Z"
+}'
+```
+
+### Health Check Response (`GET /health`)
+
+```json
+{
+  "status": "ok",
+  "message": "API is running"
+}
+```
+
+---
+
 ## 📊 Data Models
 
 ### User Schema
@@ -190,4 +223,5 @@ DATABASE_URL=postgresql://<username>:<password>@<host>:<port>/<dbname>?sslmode=r
 - `due_date` (datetime, optional)
 - `created_at` (datetime)
 - `updated_at` (datetime)
+
 
