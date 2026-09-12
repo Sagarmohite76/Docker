@@ -4,7 +4,6 @@ from app.services.task_service import (
     get_task,
     get_tasks,
     update_task,
-    update_task_status,
 )
 from app.services.user_service import (
     create_user,
@@ -21,7 +20,6 @@ __all__ = [
     "get_task",
     "get_tasks",
     "update_task",
-    "update_task_status",
     "create_user",
     "delete_user",
     "get_user_by_email",
@@ -29,4 +27,3 @@ __all__ = [
     "get_users",
     "update_user",
 ]
-

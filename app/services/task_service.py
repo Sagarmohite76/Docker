@@ -1,10 +1,10 @@
 from sqlalchemy.orm import Session
 
 from app.db.models import Task
-from app.schemas.task import TaskCreate, TaskStatus, TaskUpdate
+from app.schemas.task import TaskCreate, TaskUpdate
 
 
-def create_task(db: Session, task_data: TaskCreate, user_id: int):
+def create_task(db: Session,task_data: TaskCreate,user_id: int):
     task = Task(
         user_id=user_id,
         title=task_data.title,
@@ -19,30 +19,31 @@ def create_task(db: Session, task_data: TaskCreate, user_id: int):
     return task
 
 
-def get_task(db: Session, task_id: int, user_id: int):
+def get_task(db: Session,task_id: int,user_id: int):
     return (
         db.query(Task)
         .filter(
             Task.id == task_id,
-            Task.user_id == user_id,
+            Task.user_id == user_id
         )
         .first()
     )
 
 
-def get_tasks(db: Session, user_id: int, status: TaskStatus | None = None):
-    query = db.query(Task).filter(Task.user_id == user_id)
-    if status:
-        query = query.filter(Task.status == status)
-    return query.all()
+def get_tasks(db: Session,user_id: int):
+    return (
+        db.query(Task)
+        .filter(Task.user_id == user_id)
+        .all()
+    )
 
 
-def update_task(db: Session, task_id: int, task_data: TaskUpdate, user_id: int):
+def update_task(db: Session,task_id: int,task_data: TaskUpdate,user_id: int):
     task = (
         db.query(Task)
         .filter(
             Task.id == task_id,
-            Task.user_id == user_id,
+            Task.user_id == user_id
         )
         .first()
     )
@@ -60,31 +61,12 @@ def update_task(db: Session, task_id: int, task_data: TaskUpdate, user_id: int):
     return task
 
 
-def update_task_status(db: Session, task_id: int, status: TaskStatus, user_id: int):
+def delete_task(db: Session,task_id: int,user_id: int):
     task = (
         db.query(Task)
         .filter(
             Task.id == task_id,
-            Task.user_id == user_id,
-        )
-        .first()
-    )
-
-    if not task:
-        return None
-
-    task.status = status
-    db.commit()
-    db.refresh(task)
-    return task
-
-
-def delete_task(db: Session, task_id: int, user_id: int):
-    task = (
-        db.query(Task)
-        .filter(
-            Task.id == task_id,
-            Task.user_id == user_id,
+            Task.user_id == user_id
         )
         .first()
     )
